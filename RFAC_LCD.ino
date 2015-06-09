@@ -16,7 +16,6 @@ void onScreen() {
   lcd.print("Reef-Life Aquarium  ");
   lcd.setCursor(0, 1);
   lcd.print("                    ");
-  get_PH();
   lcd.setCursor(0, 2);
   lcd.print("                    ");
   printTemperature();

@@ -137,18 +137,22 @@ decode_results results;
 /********************************
 * Definición de PH              *
 ********************************/
+//Pines de los Sensores.
 #define pH1_Pin A8
 #define pH2_Pin A9
 #define cA_Pin  A10
 #define mg_Pin  A11
 #define NO3_Pin A12
 #define NOA_Pin A13
-#define Offset 0.7               // Hay que hacer pruebas
-#define samplingInterval 20
-#define pHreadInterval 5000
 #define ArrayLength 50       
-float pHArray[ArrayLength];    
-int   pHArrayIndex=0;    
+
+long sensorInterval=0;
+long Offset_PH1 = 0;
+long Offset_PH2 = 0;
+long Offset_CA  = 0;
+long Offset_MG  = 0;
+long Offset_NO3 = 0;
+long Offset_NO4 = 0;
 
 /********************************
 * Definición de Sensor de Luz   *
@@ -181,6 +185,18 @@ String LedD_OFF = "";
 #define periD 9
 #define periE 10
 #define periF 11
+String Peri_1_ON="";
+String Peri_2_ON="";
+String Peri_3_ON="";
+String Peri_4_ON="";
+String Peri_5_ON="";
+String Peri_6_ON="";
+String Peri_1_OFF="";
+String Peri_2_OFF="";
+String Peri_3_OFF="";
+String Peri_4_OFF="";
+String Peri_5_OFF="";
+String Peri_6_OFF="";
 
 /********************************
 * Definición de Alimentador     *

@@ -10,7 +10,7 @@ void initRelays() {
     digitalWrite(rel_conec[i], HIGH);  
   }
   
-  switch_cal=getParameter("Switch_Calentador");
+  switch_cal=getParameter("Switch_Calentador").toInt();
   switch_sub=1;
   switch_ski=2;
   switch_cir=3;
@@ -18,7 +18,6 @@ void initRelays() {
   switch_chi=5;
   switch_bca=6;
   switch_sca=7;
-  
 }
 
 void switch_relay(int origen) {

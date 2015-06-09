@@ -8,7 +8,7 @@ void initTemp() {
   sensors.begin();
   sensors.setResolution(thermA, 10);
   sensors.setResolution(thermB, 10);
-  termInterval=getParameter("termInterval");
+  termInterval=getParameter("termInterval").toInt();
   printTemperature();
 }
 
@@ -25,11 +25,9 @@ void printTemperature() {
   lcd.print(tempB);
 
   if (tempA<25) { 
-    on_switch(CALENTADOR);
+    on_switch(switch_cal);
   } 
   if (tempA>25.25) {
-    off_switch(CALENTADOR);
+    off_switch(switch_cal);
   }
-  
-  
 }

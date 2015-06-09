@@ -76,6 +76,7 @@ void writeStat(int type, String valueSetted) {
   String fileStr  = "";
   String fileName = "stats/";
   String newVal   = getNow();
+  char   fName[255];
   SdFile statFile;
 
   switch (type) {
@@ -87,8 +88,9 @@ void writeStat(int type, String valueSetted) {
   }
   newVal += " ";
   newVal.concat(valueSetted);
-  if (statFile.open(fileName, O_WRITE)) {
-    statFile.print(newVal);
+  fileName.toCharArray(fName, 255);
+  if (statFile.open(fName, O_RDWR | O_CREAT | O_AT_END)) {
+    statFile.println(newVal);
     statFile.close();
   }
 }
