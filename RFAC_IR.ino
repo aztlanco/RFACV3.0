@@ -1,13 +1,15 @@
 /********************************
 * Reef-Life Aquarium Controller *
-* Versión 3.0.0 - 201505        *
+* Versión 3.0.0 - 201506        *
 * Control Remoto                *
 ********************************/
 
+//Inicio el Lector del Control Remoto.
 void initIR() {
   irrecv.enableIRIn();
 }
 
+//Busco la señal del Infrarojo para transformarla en una acción
 void readIR() {
 
   // Leo el IR   
@@ -36,16 +38,16 @@ void readIR() {
     if (results.value == 0x32C6FDF7) { 
       //ledElapsed = demoInterval;
       //doAmanecer=true;
-      amanecer();
+      //amanecer();
       //ledTimmer=millis();
     }
     // Press # Demo de Anochecer
     if (results.value == 0x3EC3FC1B) { 
       //ledElapsed = demoInterval;
       //doAnochece=true;
-      anochecer();
+      //anochecer();
       //ledTimmer=millis();
     }
-    irrecv.resume(); // Receive the next value
+    irrecv.resume(); // Espera la siguiente señal
   }
 }

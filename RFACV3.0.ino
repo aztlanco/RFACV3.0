@@ -1,6 +1,6 @@
 /********************************
 * Reef-Life Aquarium Controller *
-* Versión 3.0.0 - 201505        *
+* Versión 3.0.0 - 201506        *
 * Declaraciones                 *
 ********************************/
 
@@ -140,8 +140,8 @@ decode_results results;
 //Pines de los Sensores.
 #define pH1_Pin A8
 #define pH2_Pin A9
-#define cA_Pin  A10
-#define mg_Pin  A11
+#define CA_Pin  A10
+#define MG_Pin  A11
 #define NO3_Pin A12
 #define NOA_Pin A13
 #define ArrayLength 50       
@@ -175,6 +175,20 @@ String LedA_OFF = "";
 String LedB_OFF = "";
 String LedC_OFF = "";
 String LedD_OFF = "";
+byte potA=0;
+byte potB=0;
+byte potC=0;
+byte potD=0;
+boolean ledAuto=false;
+long ledsInterval=0;
+boolean ledA_On=false;
+boolean ledB_On=false;
+boolean ledC_On=false;
+boolean ledD_On=false;
+boolean ledA_Off=false;
+boolean ledB_Off=false;
+boolean ledC_Off=false;
+boolean ledD_Off=false;
 
 /********************************
 * Definición de Peristalticas   *

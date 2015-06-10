@@ -1,9 +1,10 @@
 /********************************
 * Reef-Life Aquarium Controller *
-* Versión 3.0.0 - 201505        *
+* Versión 3.0.0 - 201506        *
 * Control de Relays             *
 ********************************/
 
+//Inicio los parámetros para los Relays
 void initRelays() {
   for (int i=0; i<8; i++) {
     pinMode(rel_conec[i], OUTPUT);
@@ -11,15 +12,16 @@ void initRelays() {
   }
   
   switch_cal=getParameter("Switch_Calentador").toInt();
-  switch_sub=1;
-  switch_ski=2;
-  switch_cir=3;
-  switch_bch=4;
-  switch_chi=5;
-  switch_bca=6;
-  switch_sca=7;
+  switch_sub=getParameter("Switch_Subida").toInt();
+  switch_ski=getParameter("Switch_Skimmer").toInt();
+  switch_cir=getParameter("Switch_Circulacion").toInt();
+  switch_bch=getParameter("Switch_BombaChiller").toInt();
+  switch_chi=getParameter("Switch_Chiller").toInt();
+  switch_bca=getParameter("Switch_BombaCA").toInt();
+  switch_sca=getParameter("Switch_SolenoideCA").toInt();
 }
 
+//Apagado de Puerto
 void switch_relay(int origen) {
   if (rel_state[origen] == LOW) {
     rel_state[origen] = HIGH;
@@ -29,11 +31,13 @@ void switch_relay(int origen) {
   digitalWrite(rel_conec[origen], rel_state[origen]);  
 }
 
+//Encendido de Puerto
 void on_switch(int origen) {
   rel_state[origen] = HIGH;
   digitalWrite(rel_conec[origen], rel_state[origen]);  
 }
 
+//Apagado de Puerto
 void off_switch(int origen) {
   rel_state[origen] = LOW;
   digitalWrite(rel_conec[origen], rel_state[origen]);  

@@ -1,9 +1,12 @@
-/****************************************************************
-* Reef-Life Aquarium Controller                                 *
-* Versión 3.0.0 - 201505                                        *
-* Lectura y Escritura de Archivos de Parámetros y Configuración *
-****************************************************************/
+/********************************
+* Reef-Life Aquarium Controller *
+* Versión 3.0.0 - 201506        *
+* Lectura y Escritura           *
+* Archivos de Parámetros        *
+* y Configuración               *
+********************************/
 
+//Abre el archivo de configración y busca un parámetro
 String getParameter(String param) {
   String retVal    = "";
   String parGetted = "";
@@ -32,6 +35,7 @@ String getParameter(String param) {
   return retVal;
 }
 
+//Actualiza el valor de un Parámetro en el Archivo de Configuración
 void writeParameter(String param, String valueSetted) {
   String parGetted = "";
   String valGetted = "";
@@ -72,6 +76,7 @@ void writeParameter(String param, String valueSetted) {
   }
 }
 
+//Guarda las estadísticas de las lecturas.
 void writeStat(int type, String valueSetted) {
   String fileStr  = "";
   String fileName = "stats/";
@@ -81,11 +86,25 @@ void writeStat(int type, String valueSetted) {
 
   switch (type) {
     case 1:
-      fileName.concat("temperatura.txt");
+      fileName.concat("tmp");
+    case 2:
+      fileName.concat("ph1");
+    case 3:
+      fileName.concat("ph2");
+    case 4:
+      fileName.concat("ca_");
+    case 5:
+      fileName.concat("mg_");
+    case 6:
+      fileName.concat("no3");
+    case 7:
+      fileName.concat("no4");
     default:
       fileName.concat("log.txt");
       break;
   }
+  fileName.concat(getMonthStat());
+  fileName.concat(".txt");
   newVal += " ";
   newVal.concat(valueSetted);
   fileName.toCharArray(fName, 255);

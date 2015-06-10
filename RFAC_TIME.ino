@@ -1,16 +1,20 @@
 /********************************
 * Reef-Life Aquarium Controller *
-* Versión 3.0.0 - 201505        *
+* Versión 3.0.0 - 201506        *
 * Control de Tiempo             *
 ********************************/
+
+//Imprime la Hora en la TFT y el LCD
 void getHour() {
-  //Serial.println(hr);
   writeTFTLn(40,225,WHITE,2,getNow());
+  printLCD(0,3,getNow());
 }
 
+//Obtiene la Fecha
 String getDay() {
   String hr = "";
-  String months[] = {"Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"};
+  String months[] = {"Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                     "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"};
   if (day()<10) { hr += "0"; }
   hr.concat(day());
   hr += "-";
@@ -20,6 +24,17 @@ String getDay() {
   return hr;
 }
 
+//Obtiene el Mes para los Ficheros de Estadísticas
+String getMonthStat() {
+  String hr = "";
+  String months[] = {"Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                     "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"};
+  hr.concat(year());
+  hr.concat(months[month()-1]);
+  return hr;
+}
+
+//Obtiene la Hora
 String getTime() {
   String hr = "";
   if (hour()<10) { hr += "0"; }
@@ -33,6 +48,7 @@ String getTime() {
   return hr;
 }
 
+//Obtiene la Hora sin Segundos
 String getTimeLite() {
   String hr = "";
   if (hour()<10) { hr += "0"; }
@@ -43,6 +59,7 @@ String getTimeLite() {
   return hr;
 }
 
+//Obtiene la Fecha y Hora
 String getNow() {
   String hr = getDay();
   hr += " ";
@@ -50,11 +67,13 @@ String getNow() {
   return hr;
 }
 
+//Actualiza la Fecha y Hora del Reloj
 void setHour(int hr, int mn, int sg, int dd, int mm, int yyyy) {
   setTime(hr, mn, sg, dd, mm, yyyy);
   RTC.set(now());
 }
 
+//Activa o Desactiva el Horario de Verano 
 void setSummer(bool on) {
   int addHr = 1;
   if (!on) addHr = addHr*-1;

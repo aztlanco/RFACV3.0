@@ -1,9 +1,11 @@
 /********************************
 * Reef-Life Aquarium Controller *
-* Versión 3.0.0 - 201505        *
+* Versión 3.0.0 - 201506        *
 * Control de Touch Screen       *
 ********************************/
 
+//Valida la posicion presionada en Pantalla
+//De acuerdo a la opcion vigente del Menu
 void validTouch() {
   int xP, yP;
   digitalWrite(SOFT_SCK_PIN, HIGH);
@@ -17,7 +19,9 @@ void validTouch() {
     if ((xP>=2) && (xP<=50)) {
       //Area de Botones de pantalla inicial
       if ((yP>=10) && (yP<58)) {
-        optTime();
+        //Ajustes de Hora
+        minus = false;
+        switchMenu(3);
       }
       if ((yP>=58) && (yP<106)) {
         //Encendido y Apagado Manual de Contactos
@@ -62,8 +66,3 @@ void validTouch() {
   }
 }
 
-void optTime() {
-  //Ajustes de Hora
-  minus = false;
-  switchMenu(3);
-}

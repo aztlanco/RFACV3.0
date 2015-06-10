@@ -1,8 +1,10 @@
 /********************************
 * Reef-Life Aquarium Controller *
-* Versión 3.0.0 - 201505        *
+* Versión 3.0.0 - 201506        *
 * Control de TFT                *
 ********************************/
+
+//Inicializo los Parámetros del TFT
 void initTFT() {
   tft.reset();
   uint16_t identifier = tft.readID();
@@ -20,6 +22,7 @@ void initTFT() {
   switchMenu(0);
 }
 
+//Pone un Texto en el TFT
 void writeTFTLn(int x, int y, uint16_t color, int font, String text) {
   tft.setTextSize(font);
   tft.setCursor(x, y);
@@ -27,6 +30,7 @@ void writeTFTLn(int x, int y, uint16_t color, int font, String text) {
   tft.println(text);
 }
 
+//Realiza los cambios del Menu
 void switchMenu(int newMenu) {
   uint16_t color;
   if (newMenu==3) {color=GREEN;} else {color=BLUE;}
@@ -41,6 +45,7 @@ void switchMenu(int newMenu) {
   getScreen(newMenu);
 }
 
+//Pone la pantalla de acuerdo a la seleccion del Menu
 void getScreen(int menu) {
   uint16_t color;
   

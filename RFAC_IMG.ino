@@ -1,9 +1,10 @@
 /********************************
 * Reef-Life Aquarium Controller *
-* Versión 3.0.0 - 201505        *
+* Versión 3.0.0 - 201506        *
 * Control de Imagenes           *
 ********************************/
 
+//Lee un fichero BMP y lo pinta en la pantalla
 void bmpDraw(char* filename, int x, int y) {
   SdFile   bmpFile;
   int      bmpWidth, bmpHeight;
@@ -97,6 +98,8 @@ void bmpDraw(char* filename, int x, int y) {
   bmpFile.close();
 }
 
+// Realiza las lecturas de 16 Bytes 
+// Las transforma en dos paquetes de 8 Bytes
 uint16_t read16(SdFile& f) {
   uint16_t result;
   ((uint8_t *)&result)[0] = f.read();
@@ -104,6 +107,8 @@ uint16_t read16(SdFile& f) {
   return result;
 }
 
+// Realiza las lecturas de 32 Bytes 
+// Las transforma en dos paquetes de 8 Bytes
 uint32_t read32(SdFile& f) {
   uint32_t result;
   ((uint8_t *)&result)[0] = f.read(); 

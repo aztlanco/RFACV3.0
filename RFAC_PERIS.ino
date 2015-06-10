@@ -1,9 +1,10 @@
 /********************************
 * Reef-Life Aquarium Controller *
-* Versión 3.0.0 - 201505        *
+* Versión 3.0.0 - 201506        *
 * Control de Peristalticas      *
 ********************************/
 
+//Inicio los parámetros para las Peristálticas
 void initPeris() {
   pinMode(periA, OUTPUT);
   pinMode(periB, OUTPUT);
@@ -25,3 +26,14 @@ void initPeris() {
   Peri_5_OFF=getParameter("Peri_5_OFF");
   Peri_6_OFF=getParameter("Peri_6_OFF");
 }
+
+//Apagado de Puerto
+void peristalticOn(int origen) {
+  digitalWrite(origen, HIGH);  
+}
+
+//Apagado de Puerto
+void peristalticOff(int origen) {
+  digitalWrite(origen, LOW);  
+}
+

@@ -1,6 +1,6 @@
 /********************************
 * Reef-Life Aquarium Controller *
-* Versión 3.0.0 - 201505        *
+* Versión 3.0.0 - 201506        *
 * Control de Sensores           *
 ********************************/
 
@@ -8,8 +8,8 @@
 void initSensors() {
   pinMode(pH1_Pin, INPUT);
   pinMode(pH2_Pin, INPUT);
-  pinMode(cA_Pin , INPUT);
-  pinMode(mg_Pin , INPUT);
+  pinMode(CA_Pin , INPUT);
+  pinMode(MG_Pin , INPUT);
   pinMode(NO3_Pin, INPUT);
   pinMode(NOA_Pin, INPUT);
 
@@ -38,6 +38,8 @@ String getSensorValue(int sensorPin, long offset) {
   sensor = promedio(sensorArray,ArrayLength)*5.0/1024;
   sensorValue=3.5*sensor+offset;
   retVal+=String(int(sensorValue))+ "."+String(getDecimal(sensorValue)); 
+  String date = getNow() + retVal;
+  return retVal;
 }
 
 // Calcula el Promedio del Muestreo

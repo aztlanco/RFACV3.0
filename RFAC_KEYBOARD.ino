@@ -1,18 +1,20 @@
 /********************************
 * Reef-Life Aquarium Controller *
-* Versión 3.0.0 - 201505        *
+* Versión 3.0.0 - 201506        *
 * Control de Teclado            *
 ********************************/
 
+//Inicio el Keypad
 void initKeyBoard() {
   customKeypad.begin();
 }
 
+//Leo el boton presionado del Keypad
 void readKB() {
   char customKey = customKeypad.getKey(); 
   if (customKey != NO_KEY){
     onScreen();
-    //if (customKey == '1') { switch_relay(0); }
+    if (customKey == '1') { switch_relay(0); }
     if (customKey == '2') { switch_relay(1); }
     if (customKey == '3') { switch_relay(2); }
     if (customKey == '4') { switch_relay(3); }
@@ -21,25 +23,25 @@ void readKB() {
     if (customKey == '*') {       
       //ledElapsed = demoInterval;
       //doAmanecer=true;
-      amanecer();
+      //amanecer();
       //ledTimmer=millis();
     }      // Press * Demo de amanecer
     if (customKey == '#') { 
       //ledElapsed = demoInterval;
       //doAnochece=true;
-      anochecer();
+      //anochecer();
       //ledTimmer=millis();
     }     // Press # Demo de anochecer
     if (customKey == 'C') {       
       //ledElapsed = demoInterval/4;
       //doAmanecer_blue=true;
-      amanecer_blue();
+      //amanecer_blue();
       //ledTimmer=millis();
     }      // Press * Demo de amanecer
     if (customKey == 'D') { 
       //ledElapsed = demoInterval/4;
       //doAnochece_blue=true;
-      anochecer_blue();
+      //anochecer_blue();
       //ledTimmer=millis();
     }     // Press # Demo de anochecer
     //screenTimer = millis();
